@@ -206,19 +206,19 @@ const bigProjects = {
       footerLink: [
         {
           name: "Visit Website",
-          url: "zync-meet.vercel.app/"
+          url: "https://zync-meet.vercel.app/"
         }
         //  you can add extra buttons here.
       ]
     },
     {
-      image: require("./assets/images/nextuLogo.webp"),
+      image: require("./assets/images/packpal.png"),
       projectName: "PackPal",
       projectDesc: "An all-in-one travel planner that combines trip management, live insights, and smart packing in one seamless app.",
       footerLink: [
         {
           name: "Visit Website",
-          url: "pack-pal-zeta.vercel.app"
+          url: "https://pack-pal-zeta.vercel.app/"
         }
       ]
     }
@@ -239,7 +239,7 @@ const achievementSection = {
       
         title: "Merit Recognition – HACKFUSION 2026",
         subtitle: "Recognised for outstanding performance at an national-level hackathon at JNTUH.",
-        image: require("./assets/images/pwaLogo.webp"),
+        image: require("./assets/images/hackfusion.png"),
         
       
      //title: "PWA Web App Developer",

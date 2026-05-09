@@ -6,11 +6,18 @@ import StyleContext from "../../contexts/StyleContext";
 
 export default function StartupProject() {
   function openUrlInNewTab(url) {
-    if (!url) {
+    if (!url || typeof url !== "string") {
       return;
     }
-    var win = window.open(url, "_blank");
-    win.focus();
+    const trimmed = url.trim();
+    let href = trimmed;
+    if (!/^https?:\/\//i.test(href) && !/^mailto:/i.test(href)) {
+      href = `https://${href.replace(/^\/+/, "")}`;
+    }
+    const win = window.open(href, "_blank", "noopener,noreferrer");
+    if (win) {
+      win.focus();
+    }
   }
 
   const {isDark} = useContext(StyleContext);
