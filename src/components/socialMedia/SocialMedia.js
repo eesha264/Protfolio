@@ -2,6 +2,21 @@ import React from "react";
 import "./SocialMedia.scss";
 import {socialMediaLinks} from "../../portfolio";
 
+/** Absolute http(s) URLs for external profiles; avoids relative links like `www...` that reload the SPA. */
+function externalHref(url) {
+  if (!url || typeof url !== "string") {
+    return url;
+  }
+  const trimmed = url.trim();
+  if (/^mailto:/i.test(trimmed)) {
+    return trimmed;
+  }
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+  return `https://${trimmed.replace(/^\/+/, "")}`;
+}
+
 export default function socialMedia() {
   if (!socialMediaLinks.display) {
     return null;
@@ -10,7 +25,7 @@ export default function socialMedia() {
     <div className="social-media-div">
       {socialMediaLinks.github ? (
         <a
-          href={socialMediaLinks.github}
+          href={externalHref(socialMediaLinks.github)}
           className="icon-button github"
           target="_blank"
           rel="noopener noreferrer"
@@ -22,7 +37,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.linkedin ? (
         <a
-          href={socialMediaLinks.linkedin}
+          href={externalHref(socialMediaLinks.linkedin)}
           className="icon-button linkedin"
           target="_blank"
           rel="noopener noreferrer"
@@ -46,7 +61,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.gitlab ? (
         <a
-          href={socialMediaLinks.gitlab}
+          href={externalHref(socialMediaLinks.gitlab)}
           className="icon-button gitlab"
           target="_blank"
           rel="noopener noreferrer"
@@ -58,7 +73,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.facebook ? (
         <a
-          href={socialMediaLinks.facebook}
+          href={externalHref(socialMediaLinks.facebook)}
           className="icon-button facebook"
           target="_blank"
           rel="noopener noreferrer"
@@ -70,7 +85,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.instagram ? (
         <a
-          href={socialMediaLinks.instagram}
+          href={externalHref(socialMediaLinks.instagram)}
           className="icon-button instagram"
           target="_blank"
           rel="noopener noreferrer"
@@ -82,7 +97,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.twitter ? (
         <a
-          href={socialMediaLinks.twitter}
+          href={externalHref(socialMediaLinks.twitter)}
           className="icon-button twitter"
           target="_blank"
           rel="noopener noreferrer"
@@ -94,7 +109,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.medium ? (
         <a
-          href={socialMediaLinks.medium}
+          href={externalHref(socialMediaLinks.medium)}
           className="icon-button medium"
           target="_blank"
           rel="noopener noreferrer"
@@ -106,7 +121,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.stackoverflow ? (
         <a
-          href={socialMediaLinks.stackoverflow}
+          href={externalHref(socialMediaLinks.stackoverflow)}
           className="icon-button stack-overflow"
           target="_blank"
           rel="noopener noreferrer"
@@ -118,7 +133,7 @@ export default function socialMedia() {
 
       {socialMediaLinks.kaggle ? (
         <a
-          href={socialMediaLinks.kaggle}
+          href={externalHref(socialMediaLinks.kaggle)}
           className="icon-button kaggle"
           target="_blank"
           rel="noopener noreferrer"
