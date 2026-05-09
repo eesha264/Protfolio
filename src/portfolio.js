@@ -164,7 +164,7 @@ const workExperiences = {
       role: "Publicity head",
       company: "Cloud community club, SNIST",
       companylogo: require("./assets/images/c3.jpeg"),
-      date: "nov 2023 – december 2025",
+      date: "Nov 2023 – December 2025",
       desc: "Led marketing and outreach for technical events.",
       descBullets: [
        "Organised AI Hack Day with 100+ participants",
@@ -270,7 +270,6 @@ const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle:
     "Discuss a project or just want to say hi? My Inbox is open for all.",
-  number: "+91-9652810123",
   email_address: "eeshagone45@gmail.com"
 };
 
