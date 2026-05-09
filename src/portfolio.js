@@ -240,7 +240,7 @@ const achievementSection = {
       
         title: "Merit Recognition – HACKFUSION 2026",
         subtitle: "Recognised for outstanding performance at an national-level hackathon at JNTUH.",
-        image: require("./assets/images/hackathon.png"),
+        image: require("./assets/images/pwaLogo.webp"),
         
       
      //title: "PWA Web App Developer",
