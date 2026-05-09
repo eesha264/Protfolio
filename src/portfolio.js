@@ -23,7 +23,7 @@ const greeting = {
   username: "Eeshitha Gone",
   title: "Hi all, I'm Eeshitha",
   subTitle: emoji(
-    "A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks."
+    "Final-year Data Science student building AI-powered web applications and scalable full-stack solutions."
   ),
   resumeLink:
     "https://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing", // Set to empty to hide the button
@@ -47,13 +47,9 @@ const skillsSection = {
   title: "What I do",
   subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
   skills: [
-    emoji(
-      "⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"
-    ),
-    emoji("⚡ Progressive Web Applications ( PWA ) in normal and SPA Stacks"),
-    emoji(
-      "⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean"
-    )
+    emoji("⚡ Build full-stack web apps using React, Node.js, and MongoDB"),
+    emoji("⚡ Develop AI-powered features and data-driven applications"),
+    emoji("⚡ Create responsive UI with Tailwind CSS and modern frameworks")
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -68,10 +64,7 @@ https://fontawesome.com/icons?d=gallery */
       skillName: "css3",
       fontAwesomeClassname: "fab fa-css3-alt"
     },
-    {
-      skillName: "sass",
-      fontAwesomeClassname: "fab fa-sass"
-    },
+  
     {
       skillName: "JavaScript",
       fontAwesomeClassname: "fab fa-js"
@@ -84,14 +77,8 @@ https://fontawesome.com/icons?d=gallery */
       skillName: "nodejs",
       fontAwesomeClassname: "fab fa-node"
     },
-    {
-      skillName: "swift",
-      fontAwesomeClassname: "fab fa-swift"
-    },
-    {
-      skillName: "npm",
-      fontAwesomeClassname: "fab fa-npm"
-    },
+    
+    
     {
       skillName: "sql-database",
       fontAwesomeClassname: "fas fa-database"
@@ -175,29 +162,26 @@ const workExperiences = {
   experience: [
     {
       role: "Publicity head",
-      company: "Cloud community club",
-      companylogo: require("./assets/images/facebookLogo.png"),
+      company: "Cloud community club, SNIST",
+      companylogo: require("./assets/images/c3.jpeg"),
       date: "nov 2023 – december 2025",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      desc: "Led marketing and outreach for technical events.",
       descBullets: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+       "Organised AI Hack Day with 100+ participants",
+       "Managed social media campaigns and student engagement"
       ]
     },
     {
-      role: "Front-End Developer",
-      company: "Quora",
-      companylogo: require("./assets/images/quoraLogo.png"),
-      date: "May 2017 – May 2018",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      role: "Tech Lead Intern",
+      company: "Vishwam.AI",
+      companylogo: require("./assets/images/vishwam.png"),
+      date: "May 2025 – July 2025",
+      desc: "Led a team of interns and built data processing workflows for structured datasets.",
+      descBullets: [
+        "Managed task assignments and ensured timely delivery of project milestones",
+        "Developed data preprocessing pipelines and evaluation documentation"
+      ]
     },
-    {
-      role: "Software Engineer Intern",
-      company: "Airbnb",
-      companylogo: require("./assets/images/airbnbLogo.png"),
-      date: "Jan 2015 – Sep 2015",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    }
   ]
 };
 
@@ -251,51 +235,23 @@ const achievementSection = {
     "Achievements, Certifications, Award Letters and Some Cool Stuff that I have done !",
 
   achievementsCards: [
-    {
-      title: "Google Code-In Finalist",
-      subtitle:
-        "First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.",
-      image: require("./assets/images/codeInLogo.webp"),
-      imageAlt: "Google Code-In Logo",
-      footerLink: [
-        {
-          name: "Certification",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dYkVvNjdNWjNybWJrbndFSHpNY2NFV1p4YmU0/view?usp=sharing"
-        },
-        {
-          name: "Award Letter",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dekxBTW5hQkg2WXUyR3QzQmR0VERiLXlGRVdF/view?usp=sharing"
-        },
-        {
-          name: "Google Code-in Blog",
-          url: "https://opensource.googleblog.com/2019/01/google-code-in-2018-winners.html"
-        }
-      ]
-    },
-    {
-      title: "Google Assistant Action",
-      subtitle:
-        "Developed a Google Assistant Action JavaScript Guru that is available on 2 Billion devices world wide.",
-      image: require("./assets/images/googleAssistantLogo.webp"),
-      imageAlt: "Google Assistant Action Logo",
-      footerLink: [
-        {
-          name: "View Google Assistant Action",
-          url: "https://assistant.google.com/services/a/uid/000000100ee688ee?hl=en"
-        }
-      ]
-    },
 
     {
-      title: "PWA Web App Developer",
-      subtitle: "Completed Certifcation from SMIT for PWA Web App Development",
-      image: require("./assets/images/pwaLogo.webp"),
-      imageAlt: "PWA Logo",
+      
+        title: "Merit Recognition – HACKFUSION 2026",
+        subtitle: "Recognised for outstanding performance at an national-level hackathon at JNTUH.",
+        image: require("./assets/images/hackathon.png"),
+        
+      
+     //title: "PWA Web App Developer",
+     // subtitle: "Completed Certifcation from SMIT for PWA Web App Development",
+      //image: require("./assets/images/pwaLogo.webp"),
+      //imageAlt: "PWA Logo",
       footerLink: [
         {name: "Certification", url: ""},
         {
           name: "Final Project",
-          url: "https://pakistan-olx-1.firebaseapp.com/"
+          url: "https://zync-meet.vercel.app/"
         }
       ]
     }
