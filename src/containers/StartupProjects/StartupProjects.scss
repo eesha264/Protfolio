@@ -82,7 +82,286 @@
   transition: 0.2s ease-in;
 }
 
+.project-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.project-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  min-height: 2em;
+  transition: 0.2s ease-in;
+}
+
+.project-action-github {
+  background: transparent;
+  border: 2px solid $buttonColor;
+  color: $buttonColor;
+}
+
+.project-action-github:hover {
+  background-color: rgba($buttonColor, 0.08);
+}
+
+.dark-mode .project-action-github {
+  border-color: $textColorDark;
+  color: $textColorDark;
+}
+
+.dark-mode .project-action-github:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.project-action-demo {
+  background: $buttonColor;
+  border: 2px solid $buttonColor;
+  color: $lightBackground3;
+}
+
+.project-action-demo:hover {
+  filter: brightness(1.08);
+}
+
+.dark-mode .project-action-demo:hover {
+  filter: brightness(1.12);
+}
+
+.project-image-placeholder {
+  width: 250px;
+  max-width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  background: linear-gradient(
+    145deg,
+    rgba($buttonColor, 0.14),
+    rgba($buttonColor, 0.05)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image-placeholder-dark {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.03)
+  );
+}
+
+.project-image-placeholder-label {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgba($buttonColor, 0.35);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.dark-mode .project-image-placeholder-label {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.projects-loading {
+  margin-bottom: 1rem;
+}
+
+.projects-skeleton-grid {
+  margin-top: 0;
+}
+
+.project-card-skeleton {
+  pointer-events: none;
+  min-height: 360px;
+  justify-content: flex-start;
+}
+
+@keyframes project-shimmer {
+  0% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0.45;
+  }
+}
+
+.project-skeleton-shimmer {
+  background: rgba($cardSubtitle, 0.25);
+  border-radius: 8px;
+  animation: project-shimmer 1.25s ease-in-out infinite;
+}
+
+.dark-mode .project-skeleton-shimmer {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.project-skeleton-image {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 1rem;
+}
+
+.project-skeleton-line {
+  height: 14px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-skeleton-line.title {
+  width: 72%;
+  height: 22px;
+}
+
+.project-skeleton-line.wide {
+  width: 92%;
+}
+
+.project-skeleton-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.project-skeleton-btn {
+  width: 92px;
+  height: 36px;
+}
+
+/* Featured portfolio projects (hardcoded in portfolio.js + flagged featured: true) */
+.featured-projects-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin: 0 auto 2rem;
+  max-width: 1120px;
+}
+
+.featured-projects-row-skeleton {
+  margin-bottom: 1rem;
+}
+
+.project-card-featured {
+  position: relative;
+  padding: 1.75rem;
+  border-radius: 14px;
+  overflow: visible;
+}
+
+.project-card-featured.project-card-light {
+  border-color: rgba($buttonColor, 0.22);
+  box-shadow:
+    0 12px 36px -14px rgba($buttonColor, 0.38),
+    $lightBoxShadowDark 0px 16px 40px -16px;
+}
+
+.project-card-featured.project-card-light:hover {
+  box-shadow:
+    0 18px 52px -16px rgba($buttonColor, 0.48),
+    $lightBoxShadowDark 0px 22px 48px -12px;
+}
+
+.dark-mode .project-card-featured.project-card-dark {
+  border-color: rgba(164, 140, 255, 0.35);
+  box-shadow:
+    0 14px 44px -12px rgba(108, 99, 255, 0.55),
+    0px 12px 32px -12px $darkBoxShadow;
+}
+
+.dark-mode .project-card-featured.project-card-dark:hover {
+  box-shadow:
+    0 18px 56px -14px rgba(138, 120, 255, 0.55),
+    0px 18px 40px -12px $darkBoxShadow;
+}
+
+.featured-project-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.38rem 0.72rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, $buttonColor, darken($buttonColor, 10%));
+  color: $lightBackground3;
+  box-shadow: 0 4px 16px rgba($buttonColor, 0.45);
+  pointer-events: none;
+}
+
+.dark-mode .featured-project-badge {
+  box-shadow:
+    0 4px 18px rgba(108, 99, 255, 0.55),
+    0 0 22px rgba(108, 99, 255, 0.18);
+}
+
+.project-image-featured {
+  height: 300px;
+}
+
+.project-card-featured .card-image {
+  width: min(100%, 440px);
+  max-height: 280px;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-card-featured .project-image-placeholder,
+.project-card-featured .project-image-placeholder-dark {
+  width: min(100%, 440px);
+  height: 280px;
+  max-width: 100%;
+}
+
+.project-card-featured .card-title {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin-top: 18px;
+}
+
+.project-card-featured .card-subtitle {
+  font-size: 1.05rem;
+}
+
+.projects-grid-standard {
+  margin-top: 0;
+}
+
+.project-skeleton-image.featured {
+  height: 240px;
+}
+
+.project-card-featured-skeleton {
+  min-height: 400px;
+}
+
 @media (max-width: 768px) {
+  .featured-projects-row {
+    grid-template-columns: 1fr;
+    margin-bottom: 1.5rem;
+  }
+
   .project-subtitle {
     font-size: 16px;
     text-align: center;

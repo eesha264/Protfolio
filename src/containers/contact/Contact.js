@@ -4,7 +4,7 @@ import SocialMedia from "../../components/socialMedia/SocialMedia";
 import {contactInfo, greeting} from "../../portfolio";
 import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
-import profilePhoto from "../../images/photo.png";
+import profilePhoto from "./photo.png";
 
 export default function Contact() {
   const {isDark} = useContext(StyleContext);

@@ -36,6 +36,9 @@
 
 .button-greeting-div {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px 24px;
   margin-top: 40px;
 }
 .download-link-button {

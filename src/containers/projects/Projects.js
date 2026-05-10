@@ -1,17 +1,18 @@
 import React, {useState, useEffect, useContext, Suspense, lazy} from "react";
 import "./Project.scss";
 import Button from "../../components/button/Button";
-import {openSource, socialMediaLinks} from "../../portfolio";
+import {bigProjects, openSource, socialMediaLinks} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 import Loading from "../../containers/loading/Loading";
+import PortfolioProjectsSection from "./PortfolioProjectsSection";
+
+const GithubRepoCard = lazy(() =>
+  import("../../components/githubRepoCard/GithubRepoCard")
+);
+
 export default function Projects() {
-  const GithubRepoCard = lazy(() =>
-    import("../../components/githubRepoCard/GithubRepoCard")
-  );
-  const FailedLoading = () => null;
   const renderLoader = () => <Loading />;
   const [repo, setrepo] = useState([]);
-  // todo: remove useContex because is not supported
   const {isDark} = useContext(StyleContext);
 
   useEffect(() => {
@@ -24,29 +25,40 @@ export default function Projects() {
           throw result;
         })
         .then(response => {
-          setrepoFunction(response.data.user.pinnedItems.edges);
+          setrepo(response.data.user.pinnedItems.edges);
         })
         .catch(function (error) {
           console.error(
-            `${error} (because of this error, nothing is shown in place of Projects section. Also check if Projects section has been configured)`
+            `${error} (because of this error, nothing is shown in place of GitHub pinned repos. Also check if Projects section has been configured)`
           );
-          setrepoFunction("Error");
+          setrepo("Error");
         });
     };
     getRepoData();
   }, []);
 
-  function setrepoFunction(array) {
-    setrepo(array);
-  }
-  if (
+  const githubPinnedReady =
     !(typeof repo === "string" || repo instanceof String) &&
-    openSource.display
-  ) {
-    return (
-      <Suspense fallback={renderLoader()}>
-        <div className="main" id="opensource">
-          <h1 className="project-title">Open Source Projects</h1>
+    Array.isArray(repo) &&
+    repo.length > 0;
+
+  const showGithubPinned = openSource.display && githubPinnedReady;
+
+  if (!bigProjects.display && !showGithubPinned) {
+    return null;
+  }
+
+  return (
+    <div className="main" id="opensource">
+      {bigProjects.display ? <PortfolioProjectsSection /> : null}
+
+      {showGithubPinned ? (
+        <Suspense fallback={renderLoader()}>
+          <h1
+            className={`project-title${bigProjects.display ? " opensource-github-heading" : ""}`}
+          >
+            Open Source Projects
+          </h1>
           <div className="repo-cards-div-main">
             {repo.map((v, i) => {
               if (!v) {
@@ -65,10 +77,8 @@ export default function Projects() {
             href={socialMediaLinks.github}
             newTab={true}
           />
-        </div>
-      </Suspense>
-    );
-  } else {
-    return <FailedLoading />;
-  }
+        </Suspense>
+      ) : null}
+    </div>
+  );
 }
