@@ -1,30 +1,16 @@
-import {useEffect, useMemo, useRef, useState} from "react";
-import {
-  fetchRemoteProjects,
-  getProjectsDataUrl,
-  normalizeStaticPortfolioProject
-} from "../utils/projectsRemote";
+import {useEffect, useState} from "react";
+import {fetchRemoteProjects, getProjectsDataUrl} from "../utils/projectsRemote";
 
 /**
- * Loads projects for the Projects section:
- * - If `REACT_APP_PROJECTS_DATA_URL` is set: fetch JSON/CSV (see `projectsRemote.js`).
- * - On failure or empty remote list: fall back to static `bigProjects.projects`.
- * - When the sheet returns rows: static portfolio projects stay first; sheet rows are appended (deduped by name).
- * - Fresh responses are cached in sessionStorage (TTL via REACT_APP_PROJECTS_CACHE_MS) to limit refetching.
+ * Loads projects only from the configured remote URL (Google Sheets CSV by default).
+ * No portfolio.js project rows are merged — sheet is the single source of truth.
+ * On fetch failure or missing URL: empty list.
  */
-export function usePortfolioProjects(bigProjects) {
+export function usePortfolioProjects() {
   const remoteUrl = getProjectsDataUrl();
-  const staticList = useMemo(() => {
-    return (bigProjects.projects || []).map((p, i) =>
-      normalizeStaticPortfolioProject(p, i)
-    );
-  }, [bigProjects.projects]);
-
-  const staticRef = useRef(staticList);
-  staticRef.current = staticList;
 
   const [state, setState] = useState(() => ({
-    projects: remoteUrl ? [] : staticList,
+    projects: [],
     loading: Boolean(remoteUrl),
     usedRemote: false
   }));
@@ -34,7 +20,7 @@ export function usePortfolioProjects(bigProjects) {
 
     if (!url) {
       setState({
-        projects: staticRef.current,
+        projects: [],
         loading: false,
         usedRemote: false
       });
@@ -53,27 +39,10 @@ export function usePortfolioProjects(bigProjects) {
         if (ac.signal.aborted) {
           return;
         }
-        const fallback = staticRef.current;
-        // Always keep portfolio.js projects (e.g. Zync, PackPal) first, then add sheet rows that are not duplicates by title.
-        let merged = fallback;
-        if (projects.length > 0) {
-          const seen = new Set(
-            fallback.map(p => String(p.projectName || "").toLowerCase())
-          );
-          const extras = projects.filter(p => {
-            const key = String(p.projectName || "").toLowerCase();
-            if (!key || seen.has(key)) {
-              return false;
-            }
-            seen.add(key);
-            return true;
-          });
-          merged = [...fallback, ...extras];
-        }
         setState({
-          projects: merged,
+          projects: Array.isArray(projects) ? projects : [],
           loading: false,
-          usedRemote: projects.length > 0
+          usedRemote: true
         });
       })
       .catch(() => {
@@ -81,7 +50,7 @@ export function usePortfolioProjects(bigProjects) {
           return;
         }
         setState({
-          projects: staticRef.current,
+          projects: [],
           loading: false,
           usedRemote: false
         });

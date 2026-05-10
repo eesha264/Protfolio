@@ -261,7 +261,6 @@ export function normalizeRemoteRow(obj, index) {
     image: imageRaw || null,
     githubUrl,
     liveDemoUrl,
-    featured: false,
     source: "remote"
   };
 }
@@ -398,7 +397,6 @@ export function normalizeStaticPortfolioProject(project, index) {
     image: project.image || null,
     githubUrl,
     liveDemoUrl,
-    featured: Boolean(project.featured),
     source: "static"
   };
 }

@@ -193,39 +193,11 @@ const openSource = {
   display: true // Set false to hide this section, defaults to true
 };
 
-// Some big projects you have worked on (Projects section).
-// Optional live list: set REACT_APP_PROJECTS_DATA_URL to hosted CSV/JSON — see src/utils/projectsRemote.js.
-
+// Projects section UI (titles only). All project cards load from Google Sheets CSV — see src/utils/projectsRemote.js.
 const bigProjects = {
   title: "Projects",
   subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
-  projects: [
-    {
-      featured: true,
-      image: require("./assets/images/zync.png"),
-      projectName: "Zync",
-      projectDesc: "AI-powered collaboration, messaging, and project management in one place.",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "https://zync-meet.vercel.app/"
-        }
-        //  you can add extra buttons here.
-      ]
-    },
-    {
-      featured: true,
-      image: require("./assets/images/packpal.png"),
-      projectName: "PackPal",
-      projectDesc: "An all-in-one travel planner that combines trip management, live insights, and smart packing in one seamless app.",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "https://pack-pal-zeta.vercel.app/"
-        }
-      ]
-    }
-  ],
+  projects: [],
   display: true // Set false to hide this section, defaults to true
 };
 
